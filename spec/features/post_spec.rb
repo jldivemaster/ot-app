@@ -26,10 +26,18 @@ describe 'navigate' do
     end
 
     it 'can be created from new page' do
-      fill_in 'post_date', with: '08/22/2019'
+      fill_in 'post_date', with: Date.today
       fill_in 'post_rationale', with: "Some stuff"
       click_on "Save"
       expect(page).to have_content("Some stuff")
+    end
+
+    it 'will have a user associated with it' do
+      fill_in 'post_date', with: Date.today
+      fill_in 'post_rationale', with: "User_Assoc"
+      click_on "Save"
+
+      expect(User.last.posts.last.rationale).to eq("User_Assoc")
     end
 
   end
