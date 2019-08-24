@@ -5,7 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates_presence_of :first_name, :last_name
-  has_many :posts 
+  has_many :posts
+
+  def full_name
+    return self.last_name.upcase + ", " + self.first_name.upcase
+  end
 
 
 end

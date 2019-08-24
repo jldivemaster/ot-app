@@ -1,0 +1,26 @@
+<div class='logo'>
+  <h1>Time Tracker</h1>
+</div>
+
+<ul class="custom-nav nav nav-tabs">
+				<li class="<%= active?(root_path) %>">
+					<%= link_to "Home", root_path %>
+				</li>
+				<li class="<%= active?(posts_path) %>">
+					<%= link_to "Time Entries", posts_path %>
+				</li>
+
+				<li class="dropdown pull-right">
+					 <a href="#" class="dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">Account</a>
+					<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+						 <li>
+               <%= link_to "Edit Details", edit_user_registration_path %>
+             </li>
+						<li class="dropdown-divider">
+						</li>
+            <li>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+            </li>
+					</ul>
+				</li>
+			</ul>
