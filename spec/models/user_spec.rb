@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
   describe "custom name methods" do
     it "has a full name method that combines first and last names" do
       expect(@user.full_name).to eq("SNOW, JON")
-
     end
   end
+  
 end
