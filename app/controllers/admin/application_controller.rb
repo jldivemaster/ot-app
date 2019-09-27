@@ -10,7 +10,7 @@ module Admin
   end
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_user!
-    before_filter :authenticate_admin
+    before_action :authenticate_admin
 
     def authenticate_admin
       unless Admin.admin_types.include?(current_user.try(:type))
