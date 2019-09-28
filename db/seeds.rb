@@ -6,7 +6,7 @@ AdminUser.create!(first_name: "Admin", last_name: "User", email: "admin@gmail.co
 puts "1 AdminUser created"
 
 100.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post} rationale content", user_id: @user.id)
+  Post.create!(date: Date.today, rationale: "#{post} rationale content", status: 0, user_id: @user.id)
 end
 
 puts "100 Posts have been created"

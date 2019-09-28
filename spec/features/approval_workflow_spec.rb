@@ -16,7 +16,7 @@ describe 'navigate' do
       choose('post_status_approved')
       click_on 'Save'
 
-      expect(@post.status).to eq('approved')
+      expect(@post.reload.status).to eq('approved')
     end
 
     it 'cannot be edited by a non-admin' do
