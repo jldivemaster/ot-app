@@ -23,9 +23,11 @@ class PostsController < ApplicationController
   end
 
   def edit
+    authorize @post
   end
 
   def update
+    authorize @post
     @post.update(post_params)
     if @post.save
       redirect_to @post, notice: "Your post was updated"

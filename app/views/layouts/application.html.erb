@@ -12,13 +12,21 @@
   <body>
 
     <div class="container">
-	<div class="row">
-		<div class="col-md-12">
-      <%= render 'shared/nav' %>
-    <%= yield %>
+	    <div class="row">
+		    <div class="col-md-12">
+          <%= render 'shared/nav' %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
-    </div>
-    </div>
-    <%= js add_gritter(flash[:notice], title: "Rails Code Along Notification", sticky: false, image: :notice) %>
+
+    <% if flash[:alert] %>
+      <%= js add_gritter(flash[:alert], title: "Rails Code Along Notification", sticky: false, image: :notice) %>
+    <% elsif flash[:error] %>
+      <%= js add_gritter(flash[:error], title: "Rails Code Along Notification", sticky: false, image: :notice) %>
+    <% elsif flash[:notice] %>
+      <%= js add_gritter(flash[:notice], title: "Rails Code Along Notification", sticky: false, image: :notice) %>
+    <% end %>
+
   </body>
 </html>

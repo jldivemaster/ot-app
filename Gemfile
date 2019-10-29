@@ -42,6 +42,7 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'gritter', '1.2.0'
 gem 'administrate', '~> 0.11.0'
 gem 'bourbon'
+gem 'pundit', '~> 1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
