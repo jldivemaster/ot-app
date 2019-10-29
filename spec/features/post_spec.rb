@@ -20,10 +20,20 @@ describe 'navigate' do
     end
 
     it 'has a list of posts' do
-      post1 = FactoryBot.create(:post)
-      post2 = FactoryBot.create(:second_post)
+      post1 = FactoryBot.build_stubbed(:post)
+      post2 = FactoryBot.build_stubbed(:second_post)
       visit posts_path
       expect(page).to have_content(/Rationale|content/)
+    end
+
+    it 'has a scope so that only post creators can see their posts' do
+      post1 = Post.create(date: Date.today, rationale: 'Who cares1', user_id: @user.id)
+      post2 = Post.create(date: Date.today, rationale: 'Who cares2', user_id: @user.id)
+      non_authorized_user = User.create(first_name: 'Non', last_name: 'Authorized', email: 'nonauth@test.com', password: 'asdfasdf', password_confirmation: 'asdfasdf')
+      post_from_other_user = Post.create(date: Date.today, rationale: 'This post should not be seen', user_id: non_authorized_user.id)
+
+      visit posts_path
+      expect(page).to_not have_content(/This post should not be seen/)
     end
   end
 
@@ -38,6 +48,7 @@ describe 'navigate' do
   describe 'delete' do
     it 'can be deleted' do
       @post = FactoryBot.create(:post)
+      @post.update(user_id: @user.id)
       visit posts_path
 
       click_link("delete_post_#{@post.id}_from_index")
