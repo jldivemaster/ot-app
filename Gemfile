@@ -43,6 +43,8 @@ gem 'gritter', '1.2.0'
 gem 'administrate', '~> 0.11.0'
 gem 'bourbon'
 gem 'pundit', '~> 1.1'
+gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
+gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
