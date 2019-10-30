@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_12_000304) do
+ActiveRecord::Schema.define(version: 2019_10_30_004215) do
 
   create_table "posts", force: :cascade do |t|
     t.date "date"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_000304) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "status"
+    t.decimal "overtime_request", default: "0.0"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_000304) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

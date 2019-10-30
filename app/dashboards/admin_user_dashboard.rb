@@ -20,6 +20,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     first_name: Field::String.with_options(searchable: false),
     last_name: Field::String.with_options(searchable: false),
     type: Field::String.with_options(searchable: false),
+    phone: Field::String.with_options(searchable: false),
     created_at: Field::DateTime.with_options(searchable: false),
     updated_at: Field::DateTime.with_options(searchable: false),
   }.freeze
@@ -34,6 +35,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     :posts,
     :id,
     :email,
+    :phone,
     :sign_in_count,
     :current_sign_in_at,
     :last_sign_in_at,
@@ -54,7 +56,8 @@ class AdminUserDashboard < Administrate::BaseDashboard
     :password,
     :first_name,
     :last_name,
-    :type
+    :type,
+    :phone,
   ].freeze
 
   # Overwrite this method to customize how users are displayed
