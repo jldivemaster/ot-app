@@ -116,5 +116,4 @@ describe 'navigate' do
     end
   end
 
-
 end
