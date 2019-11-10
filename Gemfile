@@ -45,6 +45,7 @@ gem 'bourbon'
 gem 'pundit', '~> 1.1'
 gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -70,6 +71,3 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
