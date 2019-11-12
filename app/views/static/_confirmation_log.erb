@@ -1,0 +1,25 @@
+<% recent_audit_items.each do |rai| %>
+  <div class='homepage-block col-md-3'>
+    <h4>
+      <%= rai.user.full_name %>
+    </h4>
+    <p>
+      <span class='pending-details'>Week Starting:</span> <%= rai.start_date %>
+    </p>
+    <p>
+      <span class='pending-details'>Confirmed at:</span> <%= rai.end_date || status_label('pending') %>
+    </p>
+    <p>
+      <span class='pending-details'>Status:</span> <%= status_label rai.status %>
+    </p>
+
+    <div class='row'>
+      <div class='col-md-6 column'>
+        <%= link_to 'Approve', approve_post_path(rai), class: 'btn btn-success btn-block', id: "approve_#{rai.id}" %>
+      </div>
+      <div class='col-md-6 column'>
+        <%= link_to 'Review', edit_post_path(rai), class: 'btn btn-warning btn-block' %>
+      </div>
+    </div>
+  </div>
+<% end %>
