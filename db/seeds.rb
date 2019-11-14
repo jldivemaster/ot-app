@@ -1,10 +1,10 @@
 
 @employee = Employee.create!(first_name: "Jason", last_name: "Leach", email: "jlspursfan@seeds.com",
-            password: "asdfasdf", password_confirmation: "asdfasdf", phone: "7343898627")
-puts "1 User created"
+            password: "asdfasdf", password_confirmation: "asdfasdf", phone: "7343898627", ssn: 1234, company: "Company Name")
+puts "1 Employee created"
 
 AdminUser.create!(first_name: "Admin", last_name: "User", email: "admin@seeds.com",
-        password: "asdfasdf", password_confirmation: "asdfasdf", phone: "7343898627")
+        password: "asdfasdf", password_confirmation: "asdfasdf", phone: "7343898627", ssn: 1234, company: "Company Name")
 
 puts "1 AdminUser created"
 

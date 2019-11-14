@@ -93,7 +93,7 @@ describe 'navigate' do
 
   describe 'edit' do
     before do
-      @edit_user = User.create(first_name: 'asdf', last_name: 'asdf', email: 'asdf@gmail.com', password: 'asdfasdf', password_confirmation: 'asdfasdf', phone: "5555555555")
+      @edit_user = FactoryBot.create(:user)
       login_as(@edit_user, :scope => :user)
       @edit_post = Post.create(date: Date.today, rationale: 'asdf', user_id: @edit_user.id, overtime_request: 5.0)
     end
