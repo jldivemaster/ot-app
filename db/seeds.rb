@@ -15,7 +15,7 @@ AuditLog.create!(user_id: @employee.id, status: 0, start_date: (Date.today - 20.
 puts "Audit Logs have been created"
 
 100.times do |post|
-  Post.create!(date: Date.today, rationale: "#{post} rationale content lorem ipsum some other yadayada content stuff and face", status: 0, user_id: @employee.id, overtime_request: 2.5 )
+  Post.create!(date: Date.today, work_performed: "#{post} work_performed content lorem ipsum some other yadayada content stuff and face", status: 0, user_id: @employee.id, daily_hours: 2.5 )
 end
 
 puts "100 Posts have been created"

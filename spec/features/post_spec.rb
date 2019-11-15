@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'navigate' do
   let(:user) { FactoryBot.create(:user) }
   let(:post) do
-    Post.create(date: Date.today, rationale: "Rationale", user_id: user.id, overtime_request: 3.5)
+    Post.create(date: Date.today, work_performed: "Work Performed", user_id: user.id, daily_hours: 3.5)
   end
 
   before do
@@ -27,12 +27,12 @@ describe 'navigate' do
       post1 = FactoryBot.build_stubbed(:post)
       post2 = FactoryBot.build_stubbed(:second_post)
       visit posts_path
-      expect(page).to have_content(/Rationale|content/)
+      expect(page).to have_content(/Work Performed|content/)
     end
 
     it 'has a scope so that only post creators can see their posts' do
       non_authorized_user = User.create(first_name: 'Non', last_name: 'Authorized', email: 'nonauth@test.com', password: 'asdfasdf', password_confirmation: 'asdfasdf', phone: '5555555555')
-      post_from_other_user = Post.create(date: Date.today, rationale: 'This post should not be seen', user_id: non_authorized_user.id, overtime_request: 4.0)
+      post_from_other_user = Post.create(date: Date.today, work_performed: 'This post should not be seen', user_id: non_authorized_user.id, daily_hours: 4.0)
 
       visit posts_path
       expect(page).to_not have_content(/This post should not be seen/)
@@ -55,7 +55,7 @@ describe 'navigate' do
       delete_user = FactoryBot.create(:user)
       login_as(delete_user, :scope => :user)
 
-      post_to_delete = Post.create(date: Date.today, rationale: "Rationale", user_id: delete_user.id, overtime_request: 2.0)
+      post_to_delete = Post.create(date: Date.today, work_performed: "Work Performed", user_id: delete_user.id, daily_hours: 7.0)
 
       visit posts_path
 
@@ -75,19 +75,19 @@ describe 'navigate' do
 
     it 'can be created from new form page' do
       fill_in 'post_date', with: Date.today
-      fill_in 'post_rationale', with: "Some stuff"
-      fill_in 'post_overtime_request', with: 4.5
+      fill_in 'post_work_performed', with: "Some stuff"
+      fill_in 'post_daily_hours', with: 12.5
 
       expect { click_on "Save" }.to change(Post, :count).by(1)
     end
 
     it 'will have a user associated with it' do
       fill_in 'post_date', with: Date.today
-      fill_in 'post_rationale', with: "User_Assoc"
-      fill_in 'post_overtime_request', with: 4.5
+      fill_in 'post_work_performed', with: "User_Assoc"
+      fill_in 'post_daily_hours', with: 4.5
       click_on "Save"
 
-      expect(User.last.posts.last.rationale).to eq("User_Assoc")
+      expect(User.last.posts.last.work_performed).to eq("User_Assoc")
     end
   end
 
@@ -95,13 +95,13 @@ describe 'navigate' do
     before do
       @edit_user = FactoryBot.create(:user)
       login_as(@edit_user, :scope => :user)
-      @edit_post = Post.create(date: Date.today, rationale: 'asdf', user_id: @edit_user.id, overtime_request: 5.0)
+      @edit_post = Post.create(date: Date.today, work_performed: 'asdf', user_id: @edit_user.id, daily_hours: 5.0)
     end
 
     it 'can be edited' do
       visit edit_post_path(@edit_post)
       fill_in 'post_date', with: Date.today
-      fill_in 'post_rationale', with: "Edited_Content"
+      fill_in 'post_work_performed', with: "Edited_Content"
       click_on "Save"
 
       expect(page).to have_content("Edited_Content")

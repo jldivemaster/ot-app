@@ -3,7 +3,7 @@
 ## Key requirement: Co needs doc that salaried employees did or didn't get OT each week.
 
 ## Models:
- - x Post -> date:date rationale:text
+ - x Post -> date:date work_performed:text
  - x User -> Devise
  - x AdminUser -> STI
 

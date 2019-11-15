@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   private
 
       def post_params
-        params.require(:post).permit(:date, :rationale, :status, :user_id, :overtime_request)
+        params.require(:post).permit(:date, :work_performed, :status, :user_id, :daily_hours)
       end
 
       def set_post

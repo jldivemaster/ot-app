@@ -1,18 +1,12 @@
 <tr>
   <td>
-    <%= post.id %>
-  </td>
-  <td>
-    <%= post.overtime_request %>
+    <%= post.daily_hours %>
   </td>
   <td>
     <%= post.date %>
   </td>
-  <td>
-    <%= post.user.full_name %>
-  </td>
-  <td>
-    <%= link_to truncate(post.rationale), post %>
+  <td class='hidden-xs'>
+    <%= link_to truncate(post.work_performed), post %>
   </td>
   <td>
     <%= status_label post.status %>
