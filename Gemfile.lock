@@ -164,7 +164,8 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     public_suffix (4.0.1)
-    puma (3.12.4)
+    puma (4.3.11)
+      nio4r (~> 2.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (2.2.2)
@@ -304,7 +305,7 @@ DEPENDENCIES
   jquery-rails
   kaminari (~> 1.1, >= 1.1.1)
   listen (>= 3.0.5, < 3.2)
-  puma (~> 3.12)
+  puma (~> 4.3)
   pundit (~> 1.1)
   rails (~> 5.2.3)
   rspec-rails (~> 3.0)
